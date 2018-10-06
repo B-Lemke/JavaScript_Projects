@@ -1,0 +1,11 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: BubblePicNoRedraw
+#Project Goal: Display a picture using a bubble packing algorithm that does not reset
+#Current Status: Completed.
+#Future Possibilities: None.
+
+#Last updated: 10/5/18
+#Added the this information page
+
+#NOTE: You must use a webserver to see this work

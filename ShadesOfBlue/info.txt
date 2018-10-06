@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: ShadeOfBlue
+#Project Goal: First project with p5, wanted to draw random ellipses with color based of mouse location.
+#Current Status: Not being worked on. Completed.
+#Future Possibilities: None.
+
+#Last updated: 10/5/18
+#Added the this information page

@@ -1,0 +1,11 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: BubblePic
+#Project Goal: Display a picture using a bubble packing algorithm that resets.
+#Current Status: Completed, but could fix visual stutter.
+#Future Possibilities: Remove visual stutter each recycling of bubble packing.
+
+#Last updated: 10/5/18
+#Added the this information page
+
+#NOTE: You must use a webserver to see this work

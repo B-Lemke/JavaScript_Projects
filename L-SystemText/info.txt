@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: L-SystemText
+#Project Goal: To explore basic concepts of an L-System using text.
+#Current Status: Not being worked on. Completed.
+#Future Possibilities: None.
+
+#Last updated: 10/5/18
+#Added the this information page

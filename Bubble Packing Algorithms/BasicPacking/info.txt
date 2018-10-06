@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: BasicBubblePacking
+#Project Goal: Bubble Packing Algorithm Exploration
+#Current Status: Not being worked on. Completed.
+#Future Possibilities: None.
+
+#Last updated: 10/5/18
+#Added the this information page

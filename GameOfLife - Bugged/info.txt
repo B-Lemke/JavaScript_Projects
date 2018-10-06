@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: GameOfLife
+#Project Goal: To explore Conway's Game of Life
+#Current Status: Not being worked on. Part of a computer crash.
+#Future Possibilities: There are logic errors in here. It is evident in the glider example, the glider stops eventually, and random points hang over. Based of experiences, I probably confused the two dimensional grid at some point and it needed to be updated. Another artifact that shows a bug is random pixels that hang on the edge of the screen.
+
+#Last updated: 10/5/18
+#Added the this information page

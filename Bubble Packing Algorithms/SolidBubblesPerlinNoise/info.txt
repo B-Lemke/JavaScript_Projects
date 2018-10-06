@@ -1,0 +1,11 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: SolidBubblesPerlinNoise
+#Project Goal: Bubble Packing Algorithm Exploration
+#Current Status: Not being worked on. Completed.
+#Future Possibilities: None.
+
+#Last updated: 10/5/18
+#Added the this information page
+
+#NOTE: This project is extremely slow because of console.logs in it. Because there is another perlin noise project that works better, I am leaving it in this state.

@@ -1,0 +1,8 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Goal: To reduce an image from 16581375 colors down to a set number like 8 or 16 using the K-means clustering algorithm.
+#Current Status: Not being worked on. Was a project that happened between computer crashes and has not been looked at since
+#Future Possibilities: An application that reduces an image down to 8 or 16 colors could be used to make a "paint by numbers" application that takes a user input image and allows them to color in a picture.
+
+#Last updated: 10/5/18
+#Added the this information page
