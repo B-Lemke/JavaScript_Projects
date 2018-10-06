@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: P5.js
+#Project Name: Trees
+#Project Goal: To display a pythagorean tree
+#Current Status: Development
+#Future Possibilities:
+
+#Last updated: 10/6/18
+# Created
