@@ -1,0 +1,53 @@
+#spreadsheetContainer{
+    white-space: nowrap;
+}
+
+.numberKey {
+    width: 98px;
+    display: inline-block;
+    margin-top: 0;
+    font-size: 18px;
+    background: #BBBBBB;
+    border: 1px solid black;
+    height: 23px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.row *{
+  text-align: center;
+}
+
+
+#key div{
+  width: 98px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 0 0 0;
+  border: 1px solid black;
+  font-size: 18px;
+  background: #BBBBBB;
+  margin-top: 0px;
+  height: 23px;
+}
+
+input {
+  margin-right: 0px;
+  width: 100px;
+  padding: 3px;
+  height: 25px;
+  vertical-align: top;
+}
+
+input:hover {
+    background-color: #eee;
+}
+
+input:focus {
+    background-color: #ccf;
+    text-align: left;
+}
+
+input:not(:focus) {
+    text-align: right;
+}

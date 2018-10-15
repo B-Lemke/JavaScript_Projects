@@ -1,4 +1,4 @@
-//Broderick LEmke - Trees
+// - Trees
 //set the width and height
 var canvasWidth = 800;
 var canvasHeight = 800;
@@ -21,13 +21,17 @@ var noiseOutput;
 var windAccel = 0;
 
 
-
+//wind noise variables
 var soundNoise;
 var noiseBtn;
 var filter;
 var noiseOsc;
+var noiseOsc2;
 var noiseOscAmp;
-var reverb;
+var noiseOscAmp2;
+var feederFreq;
+//var reverb;
+var windWah;
 
 
 function setup() {
@@ -51,29 +55,39 @@ function setup() {
 
     frameRate(20);
 
+    //set up wind variables
     windSpeed = 0;
     windAccel = 0;
-
     noiseInput = 0;
 
-    soundNoise = new p5.BandPass()
-    noiseBtn = createButton('Noise');
-    noiseBtn.mousePressed(playNoise);
 
+    //set up wind noise variables
     soundNoise = new p5.Noise();
 
     noiseOsc = new p5.Oscillator();
     noiseOsc.setType('sine');
-    noiseOsc.freq(.1);
+    noiseOsc.freq(.3);
     noiseOsc.amp(1);
     noiseOsc.start();
+
+    noiseOsc2 = new p5.Oscillator();
+    noiseOsc2.setType('sine');
+    noiseOsc2.freq(1);
+    noiseOsc2.amp(.2);
+    noiseOsc2.start();
+
+
 
     noiseOscAmp = new p5.Amplitude();
     noiseOscAmp.setInput(noiseOsc);
 
+    noiseOscAmp2 = new p5.Amplitude();
+    noiseOscAmp2.setInput(noiseOsc2);
+
+
     filter = new p5.BandPass();
 
-    reverb = new p5.Reverb();
+    //reverb = new p5.Reverb();
 
 
 }
@@ -98,7 +112,7 @@ function draw() {
             windSpeed = windSpeed + (windAccel - .5) * .005;
         } else if ( (windSpeed >= .1 && windAccel <= .5) || (windSpeed <= -.1 && windAccel >= .5) ) {
              //if wind is at an extreme but wants to blow the other way, let it
-            windSpeed = windSpeed + (windAccel - .5) * .005;
+            windSpeed = windSpeed + (windAccel - .5) * .01;
         } else {
             //getting near an extreme, very small changes
             windSpeed = windSpeed + (windAccel - .5) * .00001;
@@ -121,7 +135,14 @@ function draw() {
     updateNoise(windSpeed);
 
 
+    feederFreq = Math.abs(noiseOscAmp2.getLevel());
 
+    //prevent choppiness when the feeder frequency hits 0
+    if (feederFreq != 0){
+      noiseOsc.freq(feederFreq);
+    } else{
+      noiseOsc.freq(0.1);
+    }
 }
 
 function drawBranch(length, branchWidth) {
@@ -158,47 +179,46 @@ function drawBranch(length, branchWidth) {
 function toggleWind() {
     if (windOn) {
         //if wind is on, turn off the sound
-
+        soundNoise.stop()
     } else {
+      // disconnect unfiltered noise,
+      // and connect to filter
+
+      soundNoise.disconnect();
+      soundNoise.connect(filter);
+      soundNoise.start();
 
     }
 
     windOn = !windOn;
     windSpeed = 0;
     windAccel = 0;
+
+
 }
 
 
 function panSound(panVal) {
     //console.log(panVal);
-    soundNoise.pan(-1 * panVal);
-}
-
-function playNoise() {
-
-    // disconnect unfiltered noise,
-    // and connect to filter
-    soundNoise.disconnect();
-    soundNoise.connect(filter);
-    soundNoise.start();
-
-    reverb.process(soundNoise);
-
-    filter.freq(noiseOscAmp.getLevel()*100);
-    filter.res(noiseOscAmp.getLevel()/10);
+    soundNoise.pan(1 * panVal);
 }
 
 function updateNoise(windSpeed) {
-    console.log(windSpeed);
+    //console.log(windSpeed);
+    windWah = noiseOscAmp.getLevel()/2;
+    //console.log(windWah);
+
     filter.freq(400);
     if (windSpeed > 0) {
-        filter.res(1 - windSpeed*10);
-        console.log(1 - windSpeed*10 + "Greater than 0");
+        filter.res(1 - windSpeed*10 - windWah);
+      //  console.log(1 - windSpeed*10 + "Greater than 0");
     }
     else if (windSpeed <= 0) {
-        filter.res(1 + windSpeed*10);
-        console.log(1 + windSpeed*10 + "less than 0");
+        filter.res(1 + windSpeed*10 + windWah);
+      //  console.log(1 + windSpeed*10 + "less than 0");
     }
 
-    soundNoise.amp(Math.abs(windSpeed * 10));
+    //set amp/volume based on how strong the wind is
+    soundNoise.amp(Math.abs(windSpeed));
+    //reverb.set(10);
 }
