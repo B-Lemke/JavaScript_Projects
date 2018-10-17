@@ -1,6 +1,12 @@
 #spreadsheetContainer{
     white-space: nowrap;
+    margin: 10px;
 }
+
+body{
+  overflow-y: auto;
+}
+
 
 .numberKey {
     width: 98px;
@@ -50,4 +56,15 @@ input:focus {
 
 input:not(:focus) {
     text-align: right;
+}
+
+/* Context Menu */
+.contextMenu {
+  display: none;
+  position: absolute;
+  z-index: 10;
+}
+
+.contextMenuActive {
+  display: block;
 }
