@@ -23,6 +23,11 @@ function preload(){
 
 
 function setup() {
+  //get rid of loading loadingMessag
+  var element = document.getElementById("loadingMessage");
+  element.parentNode.removeChild(element);
+
+
   //setup will change the dafault size of the canvas even though is specifice in the newImage(). Resize it properly for the first one
   var cnv = createCanvas(sourceImage.width, sourceImage.height);
 
@@ -44,7 +49,7 @@ function draw() {
   }
 
 
-  //console.log(balls.length);
+  console.log(balls.length);
 
   //when out of balls
   if (balls.length == 0 && notDoubled){
@@ -153,8 +158,11 @@ function getNewNASADate(){
 }
 
 function newImage(){
+  console.log("Getting image");
   getNewNASADate();
   var apiURL = 'https://api.nasa.gov/planetary/apod?api_key=py9yOVmf7v7jKOqbzWZ6uR1KqhxhBWhJhj0JkLxG&date=' + newYear + '-' + newMonth + '-' + newDay;
+  //Broken link for testing:
+  //apiURL = "https://api.nasa.gov/planetary/apod?api_key=py9yOVmf7v7jKOqbzWZ6uR1KqhxhBWhJhj0JkLxG&date=2014-01-12"
   var spaceImage = loadJSON(apiURL,function(){
     console.log("Loading JSON: " + spaceImage);
     //once the JSON has been loaded, callback to this function and loas the image into the source image variable
@@ -167,7 +175,11 @@ function newImage(){
 
     });
 
-  });
+  },
+  //if the JSON can't be loaded, call this function again to get a new URL for the JSON
+  function(){newImage();});
+
+
 
 }
 
@@ -176,9 +188,14 @@ function setupCanvas(spaceImage){
 
   console.log("Starting setup");
   console.log(sourceImage);
-  // put setup code here
 
-  console.log(sourceImage.width + "            " + sourceImage.height);
+  //size before:
+  console.log("Before: " + sourceImage.width + "            " + sourceImage.height);
+
+  checkImageTooBig();
+
+  //size after
+  console.log("After " + sourceImage.width + "            " + sourceImage.height);
   var cnv = createCanvas(sourceImage.width, sourceImage.height);
 
   //put canvas in sketch holder div
@@ -189,6 +206,8 @@ function setupCanvas(spaceImage){
   noStroke();
 
   maxRadius = sourceImage.width/10;
+
+  setNumBalls();
 
   //make balls
   for (var i = 0; i < numBalls; i++) {
@@ -215,4 +234,36 @@ function setupCanvas(spaceImage){
     a.setAttribute('href',spaceImage.hdurl);
     a.innerHTML = "[Link]";
     myNode.appendChild(a);
+
+    //if there is a copyright, add it
+    if (spaceImage.copyright !== undefined){
+        document.getElementById('copyright').textContent = " \u00A9 Copyright: " + spaceImage.copyright;
+    }
+    else{
+      console.log("No copyright");
+    }
+}
+
+
+
+function checkImageTooBig(){
+  //Check to see if the image is too big for the current window size
+  if(sourceImage.width > window.innerWidth){
+    //image bigger than displayErrorScreen
+    sourceImage.resize( window.innerWidth - 300, 0);
+  }
+  if(sourceImage.height > window.innerHeight){
+    sourceImage.resize( 0, window.innerHeight - 300);
+  }
+}
+
+function setNumBalls(){
+  //set the number of balls to be proportional to the size of the image. Use the largest dimension
+  if(sourceImage.width > sourceImage.height){
+    numBalls = sourceImage.width * 3;
+    console.log("Num of balls: " + numBalls);
+  } else{
+    numBalls = sourceImage.height * 3;
+        console.log("Num of balls: " + numBalls)
+  }
 }

@@ -8,3 +8,38 @@ justify-content: center;
 /* This centers our sketch vertically. */
 align-items: center;
 }
+
+body{
+  background: black;
+}
+
+
+#textInfo {
+  background: #CCCCCC;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+#loadingMessage{
+  color: white;
+  width: 70%;
+  font-size: 3em;
+  margin: 200px auto;
+}
+
+#title{
+  font-size: 1em;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+#date{
+  font-style: italic;
+  margin: 10px;
+}
+
+#normalImage{
+    margin: 10px;
+}
