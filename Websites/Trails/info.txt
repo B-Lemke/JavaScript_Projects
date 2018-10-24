@@ -1,9 +1,0 @@
-#By: Broderick Lemke
-#Libraries: P5.js
-#Project Name: Trails
-#Project Goal: Create a piece of art using javascript.
-#Current Status: Not being worked on. Completed.
-#Future Possibilities: It would be interesting to change the color values and save the output as a series of artistic panels. Additionally it would be interesting to have this displayed on a small monitor controlled by a raspberry pi or something to just keep on a desk as a decoration. It could eb modified to change colors more and not stop after a certain number of times.
-
-#Last updated: 10/5/18
-#Added the this information page

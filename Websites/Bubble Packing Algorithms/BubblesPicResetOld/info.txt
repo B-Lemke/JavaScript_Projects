@@ -1,9 +1,0 @@
-#By: Broderick Lemke
-#Libraries: P5.js
-#Project Name: ImageHiding
-#Project Goal: To hide a text string in an image and then be able to decode it.
-#Current Status: Not being worked on. Was a project that happened between computer crashes and has not been looked at since
-#Future Possibilities: A user could upload their own messages and images to send secret messages with friends.
-
-#Last updated: 10/5/18
-#Added the this information page

@@ -162,6 +162,7 @@ function toggleMenuOn() {
     }
   }
 
+//turn the menu off, remove the active class
 function toggleMenuOff() {
     if ( menuState == 1 ) {
       menuState = 0;

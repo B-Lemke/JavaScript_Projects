@@ -1,0 +1,9 @@
+#By: Broderick Lemke
+#Libraries: p5JS
+#Project Name: NASA API
+#Project Goal: Manipulate an image from the NASA API using P5js
+#Current Status: Some bugs to fix
+#Future Possibilities:
+
+#Last updated: 10/23/18
+#
